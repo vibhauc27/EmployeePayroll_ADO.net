@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeePayroll_ADO.net
 {
-    public class EmployeeModel
+    public class EmployeeModel   // Class to map the relational data base model to a entity.
     {
         public int EmployeeID { get; set; }
         public string EmployeeName { get; set; }
@@ -19,6 +19,6 @@ namespace EmployeePayroll_ADO.net
         public double Deduction { get; set; }
         public Single TaxablePay { get; set; }
         public Single NetPay { get; set; }
-        public double Tax { get; set; }
+        public Single IncomeTax { get; set; }
     }
 }

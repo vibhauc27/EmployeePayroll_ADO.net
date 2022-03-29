@@ -10,6 +10,7 @@ namespace EmployeePayroll_ADO.net
             Console.WriteLine("Welcome To Employee Payroll Service Program");
             EmployeeRepo emprepo = new EmployeeRepo();
             Console.WriteLine(emprepo.EstablishConnection());
+            Console.WriteLine(emprepo.GetAllRecords());
         }
     }
 }
