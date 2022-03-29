@@ -17,7 +17,7 @@ namespace EmployeePayroll_ADO.net
             Console.WriteLine(emprepo.getAvragSalary());
             Console.WriteLine(emprepo.getMinSalary());
             Console.WriteLine(emprepo.getMaxSalary());
-            Console.WriteLine(emprepo.getCountSalary());
+            Console.WriteLine(emprepo.getCountSalary());           
         }
     }
 }

@@ -12,7 +12,7 @@ namespace EmployeePayroll_ADO.net
         public string EmployeeName { get; set; }
         public double BasicPay { get; set; }
         public DateTime start_date { get; set; }
-        public char gendre { get; set; }
+        public string Gender { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string Department { get; set; }
@@ -20,5 +20,7 @@ namespace EmployeePayroll_ADO.net
         public Single TaxablePay { get; set; }
         public Single NetPay { get; set; }
         public Single IncomeTax { get; set; }
+        public string Country { get;  set; }
+        public string City { get;  set; }
     }
 }

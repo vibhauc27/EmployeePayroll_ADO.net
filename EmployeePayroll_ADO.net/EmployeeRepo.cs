@@ -63,7 +63,7 @@ namespace EmployeePayroll_ADO.net
                             employeeModel.EmployeeName = dr.GetString(1);
                             employeeModel.BasicPay = Convert.ToDouble(dr.GetDecimal(2));
                             employeeModel.start_date = dr.GetDateTime(3);
-                            employeeModel.gendre = Convert.ToChar(dr.GetString(4));
+                            //employeeModel.Gender = Convert.ToChar(dr.GetString(4));
                             employeeModel.PhoneNumber = dr.GetString(5);
                             employeeModel.Address = dr.GetString(6);
                             employeeModel.Department = dr.GetString(7);
@@ -72,7 +72,7 @@ namespace EmployeePayroll_ADO.net
                             //employeeModel.NetPay = (float)dr.GetSqlSingle(10);
                             employeeModel.IncomeTax = (float)dr.GetSqlSingle(11);
 
-                            Console.WriteLine(employeeModel.EmployeeID + " , " + employeeModel.EmployeeName + " , " + employeeModel.Address + " , " + employeeModel.gendre + " , " + employeeModel.Department + " , " + employeeModel.NetPay + " , " + employeeModel.start_date + " , " + employeeModel.PhoneNumber
+                            Console.WriteLine(employeeModel.EmployeeID + " , " + employeeModel.EmployeeName + " , " + employeeModel.Address + " , " + employeeModel.Gender + " , " + employeeModel.Department + " , " + employeeModel.NetPay + " , " + employeeModel.start_date + " , " + employeeModel.PhoneNumber
                                                 + " , " + employeeModel.BasicPay + " , " + employeeModel.Address + " , " + employeeModel.Deduction + " , " + employeeModel.TaxablePay + " , " + employeeModel.IncomeTax);
                         }
                     }
@@ -337,6 +337,47 @@ namespace EmployeePayroll_ADO.net
             catch (Exception e)
             {
                 throw new Exception(e.Message);
+            }
+        }
+
+
+        public bool InsertEmployee(EmployeeModel empModel)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand command = new SqlCommand("payrollProcedure", this.connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    //command.Parameters.AddWithValue("@EmployeeID", empModel.EmployeeID);
+                    command.Parameters.AddWithValue("@EmployeeName", empModel.EmployeeName);
+                    command.Parameters.AddWithValue("@BasicPay", empModel.BasicPay);
+                    command.Parameters.AddWithValue("@StartDate", empModel.start_date);
+                    command.Parameters.AddWithValue("@Gender", empModel.Gender);
+                    command.Parameters.AddWithValue("@PhoneNumber", empModel.PhoneNumber);
+                    command.Parameters.AddWithValue("@Address", empModel.Address);
+                    command.Parameters.AddWithValue("@Department", empModel.Department);
+                    command.Parameters.AddWithValue("@Deductions", empModel.Deduction);
+                    command.Parameters.AddWithValue("@TaxablePay", empModel.TaxablePay);
+                    command.Parameters.AddWithValue("@NetPay", empModel.NetPay);
+                    command.Parameters.AddWithValue("@IncomeTax", empModel.IncomeTax);
+                    this.connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    this.connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
             }
         }
     }
