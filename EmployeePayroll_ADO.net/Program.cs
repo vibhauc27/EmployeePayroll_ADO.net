@@ -11,6 +11,7 @@ namespace EmployeePayroll_ADO.net
             EmployeeRepo emprepo = new EmployeeRepo();
             Console.WriteLine(emprepo.EstablishConnection());
             Console.WriteLine(emprepo.GetAllRecords());
+            Console.WriteLine(emprepo.UpdateEmployee());
         }
     }
 }
